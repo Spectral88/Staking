@@ -70,19 +70,22 @@ body{
   clear: left;
 }
 
-#layersContent{
+#layersContent, #toolsContent, #loginContent{
   width:100%;
   height:100%;
   display:none;
   overflow: auto;
+  padding:15px;
 }
 
 #layersContent h3{
   padding-left:15px;
   text-decoration: underline;
+  padding-top: 0px;
 }
 
 #layersContent ul{
+  padding:0px;
 
 }
 
@@ -93,4 +96,9 @@ body{
 
 #layersContent label{
   color:white;
+}
+
+#loginContent input{
+  margin:10px;
+  margin-left:5px;
 }

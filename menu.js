@@ -1,5 +1,5 @@
 // Initialize Menu tabs
-  var tabsList = ["Layers","Tools"];
+  var tabsList = ["Layers","Tools","Login"];
   // loop through tabs and append an <li> for each item
   for (var i in tabsList){
     let li = document.createElement('li');
@@ -44,20 +44,6 @@ function menuToggle(menu){
   }
 };
 
-/*
-// toggle Layers div when Layers button is clicked
-  // get the layers button and assign it to the var layersBtn
-  var menuItems = document.getElementsByClassName('menuItem');
-  for (var i in menuItems){
-    if(menuItems[i].innerText == 'Layers'){
-      var layersBtn = menuItems[i];
-    }
-  }
-  layersBtn.addEventListener('click',(e)=>{
-    layersContent.style.display = 'block';
-  })
-*/
-
 //initialize layers list in menu
   // Layers object
   var mapLayers = ["Map Locations","Lines","Transformers","Meters","OCRs","Open Points"];
@@ -91,26 +77,70 @@ function layerToggle(e){
 }
 
 function menuItemClick(e){
-  if(e.target.innerText == 'Layers'){
-    toggleLayerMenu();
+  // clear any menu content, and send event to content toggle function
+  clearMenuContent();
+  toggleMenuContent(e);
+}
+
+function toggleMenuContent(e){
+  let target = e.target.innerText;
+  // decorate button
+    decorateBtn(e);
+  // toggle display
+    let selection = e.target.innerText;
+    if(selection == 'Layers'){
+      showLayersMenu();
+    }else if(selection == 'Tools'){
+      showToolsMenu();
+    }else if(selection == 'Login'){
+      showLoginMenu();
+    }
+}
+
+function decorateBtn(e){
+  // clear text decoration for other buttons
+  let buttons = tabsUL.children;
+  for (var i in buttons){
+    try{
+      buttons[i].style.fontWeight = '';
+      buttons[i].style.textDecoration = '';
+      buttons[i].style.backgroundColor = 'white';
+      buttons[i].style.color = 'black';
+    }
+    catch(err){
+      // do nothing
+    }
+  }
+  let style = e.target.style;
+  if(style.fontWeight != 'bold'){
+    style.fontWeight = 'bold';
+    style.textDecoration = 'underline';
+    style.backgroundColor = tabBtnColorActive;
+    style.color = 'white'
+  }else{
+    style.fontWeight = '';
+    style.textDecoration = '';
+    style.backgroundColor = 'black';
   }
 }
 
-
-function toggleLayerMenu(){
-  let menuItems = document.getElementsByClassName('menuItem');
-  for (var i in menuItems){
-    if (menuItems[i].innerText == 'Layers'){
-      var layersBtn = menuItems[i];
+function clearMenuContent(e){
+  let menuDivs = menuContent.children;
+  for (var i in menuDivs){
+    if(menuDivs[i].nodeName == 'DIV'){
+      menuDivs[i].style.display = 'none';
     }
   }
-  if(layersContent.style.display != 'block'){
-    layersContent.style.display = 'block';
-    layersBtn.style.textDecoration = 'underline';
-    layersBtn.style.fontWeight = 'bold';
-  }else{
-    layersContent.style.display = 'none';
-    layersBtn.style.textDecoration = '';
-    layersBtn.style.fontWeight = '';
-  }
+}
+
+function showLayersMenu(){
+  layersContent.style.display = 'block';
+}
+
+function showToolsMenu(){
+  toolsContent.style.display = 'block';
+}
+
+function showLoginMenu(){
+  loginContent.style.display = 'block';
 }

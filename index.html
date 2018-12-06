@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta charset="UTF-8">
     <!--Set for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -30,10 +31,23 @@
           <ul id='layersList'>
           </ul>
         </div>
+        <div id='toolsContent'>
+          <button id="drawMapLocBtn">Draw Map Location</button>
+        </div>
+        <div id='loginContent'>
+          <label>Username:</label>
+          <br>
+          <input type='text'></input>
+          <br>
+          <input type='password'></input>
+          <br>
+          <button id='loginSubmit'>Submit</button>
+        </div>
       </div>
     </div>
   </body>
   <!--Once all elements are loaded, load map javascript-->
   <script src='map.js'></script>
+  <script src='settings.js'></script>
   <script src='menu.js'></script>
 </html>
