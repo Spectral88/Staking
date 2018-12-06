@@ -5,6 +5,8 @@
     let li = document.createElement('li');
     li.className = "menuItem";
     li.innerText = tabsList[i];
+    // add an event listener to the <li> element
+    li.addEventListener('click',menuItemClick);
     tabsUL.appendChild(li);
   }
 
@@ -42,6 +44,7 @@ function menuToggle(menu){
   }
 };
 
+/*
 // toggle Layers div when Layers button is clicked
   // get the layers button and assign it to the var layersBtn
   var menuItems = document.getElementsByClassName('menuItem');
@@ -53,7 +56,7 @@ function menuToggle(menu){
   layersBtn.addEventListener('click',(e)=>{
     layersContent.style.display = 'block';
   })
-
+*/
 
 //initialize layers list in menu
   // Layers object
@@ -85,4 +88,29 @@ function layerToggle(e){
     var state = 'off';
   }
   console.log(layerName + " is " + state);
+}
+
+function menuItemClick(e){
+  if(e.target.innerText == 'Layers'){
+    toggleLayerMenu();
+  }
+}
+
+
+function toggleLayerMenu(){
+  let menuItems = document.getElementsByClassName('menuItem');
+  for (var i in menuItems){
+    if (menuItems[i].innerText == 'Layers'){
+      var layersBtn = menuItems[i];
+    }
+  }
+  if(layersContent.style.display != 'block'){
+    layersContent.style.display = 'block';
+    layersBtn.style.textDecoration = 'underline';
+    layersBtn.style.fontWeight = 'bold';
+  }else{
+    layersContent.style.display = 'none';
+    layersBtn.style.textDecoration = '';
+    layersBtn.style.fontWeight = '';
+  }
 }
