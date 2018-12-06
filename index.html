@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <!--Set for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--load CSS for page-->
+    <link rel='stylesheet' type='text/css' href='index.css' />
+    <!--load CSS for Leaflet-->
+    <link rel='stylesheet' type="text/css" href="/libs/leaflet/leaflet.css" />
+    <!--load in Leaflet Javascript-->
+    <script src='/libs/leaflet/leaflet.js'></script>
+  </head>
+  <body>
+    <div id='map'>
+    </div>
+    <div id='menu'>
+      <div id="menuHead">
+        <img id='menuLines' src='/images/menuLines.svg' />
+        Menu
+      </div>
+      <div class='clear'>
+      </div>
+      <div id='tabs'>
+        <ul id = 'tabsUL'>
+        </ul>
+      </div>
+      <div id='menuContent'>
+        <div id='layersContent'>
+          <h3>Layers:</h3>
+          <ul id='layersList'>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!--Once all elements are loaded, load map javascript-->
+  <script src='map.js'></script>
+  <script src='menu.js'></script>
+</html>
