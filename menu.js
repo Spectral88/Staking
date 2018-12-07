@@ -21,11 +21,11 @@ menuLines.addEventListener('click',(e)=>{
 
 function menuToggle(menu){
   // if menu is closed, open it
-  if(menu.style.width != '30%'){
-    menu.style.width = '30%';
+  if(menu.style.width != menuWidth){
+    menu.style.width = menuWidth;
     menu.style.height = '100%';
     menu.style.backgroundColor = 'black';
-    menu.style.opacity = 0.8;
+    menu.style.opacity = menuOpactiy;
     menuLines.src = '/images/close.svg';
     menuHead.style.borderBottom = '5px white solid';
     menuHead.style.paddingBottom = '15px';
@@ -144,3 +144,16 @@ function showToolsMenu(){
 function showLoginMenu(){
   loginContent.style.display = 'block';
 }
+
+woLines.addEventListener('click',(e)=>{
+  if(woWindow.style.height != '30%'){
+    woWindow.style.height = '30%';
+    woWindow.style.opacity = '0.8';
+    woWindow.style.backgroundColor = '#575859';
+  }else{
+    woWindow.style.height = '';
+    woWindow.style.opacity = '0.3';
+    woWindow.style.backgroundColor = '';
+  }
+
+})
