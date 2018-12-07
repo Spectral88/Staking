@@ -145,7 +145,8 @@ function showLoginMenu(){
   loginContent.style.display = 'block';
 }
 
-woLines.addEventListener('click',(e)=>{
+woLines.addEventListener('click',toggleWoWindow);
+function toggleWoWindow(){
   if(woWindow.style.height != '30%'){
     woWindow.style.height = '30%';
     woWindow.style.opacity = '0.8';
@@ -155,5 +156,41 @@ woLines.addEventListener('click',(e)=>{
     woWindow.style.opacity = '0.3';
     woWindow.style.backgroundColor = '';
   }
+}
 
-})
+drawMapLocBtn.addEventListener('click',drawCircleMarker);
+function drawCircleMarker(){
+  var marker = new L.Draw.CircleMarker(map, drawControl.options.polyline).enable();
+};
+
+map.on(L.Draw.Event.CREATED, function(e){
+  console.log(e);
+  var layer = e.layer;
+  //map.addLayer(layer);
+  mapLoc.addLayer(layer);
+  if(woEditSession){
+    currentWo.addNewFeature(layer.toGeoJSON());
+  }
+  layer.on('click',(e)=>{
+    console.log(e);
+    console.log(this);
+  })
+});
+
+document.onkeypress = function(e){
+  if(e.key == 'a'){
+    drawCircleMarker();
+  }
+};
+
+var mapLoc = new L.layerGroup();
+mapLoc.addTo(map);
+
+startWoBtn.addEventListener('click',()=>{
+  console.log("Started Workorder");
+  woEditSession = true;
+  currentWo = new WorkOrderObject();
+  toggleWoWindow();
+});
+
+woEditSession = false;

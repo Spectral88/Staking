@@ -116,3 +116,7 @@ body{
   margin-left:auto;
   margin-right:auto;
 }
+
+#toolsContent li{
+  list-style: none;
+}
